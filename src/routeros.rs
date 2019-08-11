@@ -198,33 +198,7 @@ impl<'a> ApiRos<'a> {
 		}
 
 	}
-        /*
         pub fn login(&mut self, username: String, pwd: String) {
-                let mut chal: Vec<u8> = Vec::new();
-                for (_ /*reply*/, attrs) in self.talk(vec![r"/login".to_string()]) {
-                        chal = hex_binascii(attrs["=ret"].clone()).unwrap();
-                }
-
-                let mut md = Md5::new();
-                md.input(&[0]);
-                md.input(pwd.as_bytes());
-                md.input(&chal[..]);
-
-                self.talk(vec![r"/login".to_string(), format!("=name={}", username),
-                                                format!("=response=00{}",md.result_str())]);
-        }
-        */
-        pub fn login(&mut self, username: String, pwd: String) {
-                /*let mut chal: Vec<u8> = Vec::new();
-                for (_ /*reply*/, attrs) in self.talk(vec![r"/login".to_string()]) {
-                        chal = hex_binascii(attrs["=ret"].clone()).unwrap();
-                }
-
-                let mut md = Md5::new();
-                md.input(&[0]);
-                md.input(pwd.as_bytes());
-                md.input(&chal[..]);
-                */
                 self.talk(vec![r"/login".to_string(), format!("=name={}", username),
                                                 format!("=password={}",pwd)]);
         }
