@@ -44,11 +44,15 @@ impl<'a> ApiRos<'a> {
 	}
 
 	pub fn try_read(&mut self) -> bool {
-		if self.stream.read(&mut [0]).unwrap() > 0 {
-			true
-		}else {
-			false
-		}
+                //if self.stream.read(&mut [0]).unwrap() > 0 {
+                        //true
+                //}else {
+                        //false
+                //}
+                match self.stream.read(&mut [0]){
+                    Ok(_)=> {true if _>0 else false},
+                    Err(e)=> {false},
+                }
 	}
 
     fn write_str(&mut self, str_buff: &[u8]) {
