@@ -72,7 +72,10 @@ impl<'a> ApiRos<'a> {
 			}
 			buff.push(tmp_buff[0]);
 		}
-		String::from_utf8(buff).unwrap()
+		match String::from_utf8(buff){
+                    Ok(n) => n,
+                    Err() => {}
+                }
 	}
 
 	fn write_len(&mut self, len: u32) {
