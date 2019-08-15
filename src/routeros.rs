@@ -74,7 +74,7 @@ impl<'a> ApiRos<'a> {
 		}
 		match String::from_utf8(buff){
                     Ok(n) => n,
-                    Err() => {}
+                    Err(_) => {"".to_string()}
                 }
 	}
 
