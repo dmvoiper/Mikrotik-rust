@@ -50,7 +50,7 @@ impl<'a> ApiRos<'a> {
                         //false
                 //}
                 match self.stream.read(&mut [0]){
-                    Ok(_)=> {true if _>0 else false},
+                    Ok(_)=> {if _>0 {true} else {false}},
                     Err(e)=> {false},
                 }
 	}
