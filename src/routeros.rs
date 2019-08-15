@@ -44,15 +44,15 @@ impl<'a> ApiRos<'a> {
 	}
 
 	pub fn try_read(&mut self) -> bool {
-                //if self.stream.read(&mut [0]).unwrap() > 0 {
-                        //true
-                //}else {
-                        //false
-                //}
-                match self.stream.read(&mut [0]){
-                    Ok(n)=> {n>0},
-                    Err(e)=> {false},
+                if self.stream.read(&mut [0]).unwrap() > 0 {
+                        true
+                }else {
+                        false
                 }
+                //match self.stream.read(&mut [0]){
+                    //Ok(n)=> {n>0},
+                    //Err(e)=> {false},
+                //}
 	}
 
     fn write_str(&mut self, str_buff: &[u8]) {
@@ -72,10 +72,11 @@ impl<'a> ApiRos<'a> {
 			}
 			buff.push(tmp_buff[0]);
 		}
-		match String::from_utf8(buff){
-                    Ok(n) => n,
-                    Err(_) => {"".to_string()}
-                }
+                String::from_utf8(buff).unwrap()
+		//match String::from_utf8(buff){
+                    //Ok(n) => n,
+                    //Err(_) => {"".to_string()}
+                //}
 	}
 
 	fn write_len(&mut self, len: u32) {
